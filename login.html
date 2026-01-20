@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Admin</title>
+</head>
+<body>
+  <h2>Login Admin</h2>
+
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="login()">Entrar</button>
+
+  <script>
+    function login() {
+      const password = document.getElementById('password').value;
+
+      if (password === "908400") {
+        localStorage.setItem("adminAuth", "true");
+        window.location.href = "admin.html";
+      } else {
+        alert("Password incorreta");
+      }
+    }
+  </script>
+</body>
+</html>

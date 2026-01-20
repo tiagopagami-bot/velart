@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin - VelArt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="admin-styles.css">
+</head>
+<body>
+   <div class="admin-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <svg class="logo-icon-admin" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="candleGradientAdmin" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#e4d4b5;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#c9ac66;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="flameGradientAdmin" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#FF6347;stop-opacity:1" />
+                        </linearGradient>
+                        <filter id="glowAdmin">
+                            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <rect x="35" y="40" width="30" height="50" rx="3" fill="url(#candleGradientAdmin)" stroke="#a88453" stroke-width="1.5"/>
+                    <ellipse cx="50" cy="40" rx="15" ry="4" fill="#e4d4b5" stroke="#a88453" stroke-width="1"/>
+                    <line x1="50" y1="25" x2="50" y2="40" stroke="#8b7355" stroke-width="1.5"/>
+                    <path d="M 50 10 Q 45 20 50 28 Q 55 20 50 10" fill="url(#flameGradientAdmin)" filter="url(#glowAdmin)" opacity="0.95"/>
+                    <path d="M 50 12 Q 48 18 50 24 Q 52 18 50 12" fill="#FFD700" opacity="0.8"/>
+                    <circle cx="50" cy="18" r="1.5" fill="#FFF" opacity="0.9"/>
+                </svg>
+                <h2>VelArt</h2>
+                <span class="admin-badge">ADMIN</span>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#dashboard" class="nav-item active" data-section="dashboard">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#produtos" class="nav-item" data-section="produtos">
+                    <i class="fas fa-box"></i>
+                    <span>Produtos</span>
+                </a>
+                <a href="#categorias" class="nav-item" data-section="categorias">
+                    <i class="fas fa-tags"></i>
+                    <span>Categorias</span>
+                </a>
+                <a href="#configuracoes" class="nav-item" data-section="configuracoes">
+                    <i class="fas fa-cog"></i>
+                    <span>Configurações</span>
+                </a>
+                <a href="../index.html" class="nav-item">
+                    <i class="fas fa-globe"></i>
+                    <span>Ver Site</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <i class="fas fa-user-circle"></i>
+                    <div>
+                        <strong>Administrador</strong>
+                        <span>admin@velart.pt</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchProducts" placeholder="Pesquisar produtos...">
+                </div>
+                <div class="top-actions">
+                    <button class="btn-icon" id="refreshData" title="Atualizar dados">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                    <button class="btn-icon" title="Notificações">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                </div>
+            </header>
+
+            <section id="dashboard-section" class="content-section active">
+                <div class="section-header">
+                    <h1>Dashboard</h1>
+                    <p>Visão geral da sua loja</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon products">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Total de Produtos</span>
+                            <span class="stat-value" id="totalProducts">12</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon categories">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Categorias</span>
+                            <span class="stat-value">4</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon price">
+                            <i class="fas fa-euro-sign"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Preço Médio</span>
+                            <span class="stat-value" id="avgPrice">€ 26,90</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon stock">
+                            <i class="fas fa-warehouse"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Status</span>
+                            <span class="stat-value status-ok">Online</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <h2>Ações Rápidas</h2>
+                    <div class="action-buttons">
+                        <button class="action-btn" onclick="switchSection('produtos')">
+                            <i class="fas fa-plus-circle"></i>
+                            <span>Adicionar Produto</span>
+                        </button>
+                        <button class="action-btn" onclick="exportData()">
+                            <i class="fas fa-download"></i>
+                            <span>Exportar Dados</span>
+                        </button>
+                        <button class="action-btn" onclick="importData()">
+                            <i class="fas fa-upload"></i>
+                            <span>Importar Dados</span>
+                        </button>
+                        <button class="action-btn" onclick="resetDefaults()">
+                            <i class="fas fa-undo"></i>
+                            <span>Restaurar Padrões</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="produtos-section" class="content-section">
+                <div class="section-header">
+                    <div>
+                        <h1>Gestão de Produtos</h1>
+                        <p>Adicione, edite ou remova produtos da sua loja</p>
+                    </div>
+                    <button class="btn btn-primary" id="addProductBtn">
+                        <i class="fas fa-plus"></i>
+                        <span>Novo Produto</span>
+                    </button>
+                </div>
+
+                <div class="filters-bar">
+                    <select id="filterCategory" class="filter-select">
+                        <option value="all">Todas as Categorias</option>
+                        <option value="floral">Floral</option>
+                        <option value="citrico">Cítrico</option>
+                        <option value="amadeirado">Amadeirado</option>
+                        <option value="especiarias">Especiarias</option>
+                    </select>
+                    
+                    <select id="sortProducts" class="filter-select">
+                        <option value="name">Ordenar por Nome</option>
+                        <option value="price-asc">Preço (Menor → Maior)</option>
+                        <option value="price-desc">Preço (Maior → Menor)</option>
+                        <option value="recent">Mais Recentes</option>
+                    </select>
+                </div>
+
+                <div class="products-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Imagem</th>
+                                <th>Nome</th>
+                                <th>Categoria</th>
+                                <th>Descrição</th>
+                                <th>Preço</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="categorias-section" class="content-section">
+                <div class="section-header">
+                    <div>
+                        <h1>Gestão de Categorias</h1>
+                        <p>Adicione, edite ou remova categorias de produtos</p>
+                    </div>
+                    <button class="btn btn-primary" id="addCategoryBtn">
+                        <i class="fas fa-plus"></i>
+                        <span>Nova Categoria</span>
+                    </button>
+                </div>
+
+                <div class="categories-grid" id="categoriesGrid">
+                </div>
+            </section>
+
+            <section id="configuracoes-section" class="content-section">
+                <div class="section-header">
+                    <h1>Configurações da Loja</h1>
+                    <p>Personalize informações de contato e dados da empresa</p>
+                </div>
+
+                <div class="settings-grid">
+                    <div class="settings-card">
+                        <h3><i class="fas fa-store"></i> Informações da Loja</h3>
+                        <div class="form-group">
+                            <label>Nome da Loja</label>
+                            <input type="text" id="storeName" value="VelArt" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>E-mail de Contato</label>
+                            <input type="email" id="storeEmail" value="contato@velart.pt" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Telefone / WhatsApp</label>
+                            <input type="tel" id="storePhone" value="+351 912 345 678" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Localização</label>
+                            <input type="text" id="storeLocation" value="Lisboa, Portugal" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3><i class="fas fa-link"></i> Redes Sociais</h3>
+                        <div class="form-group">
+                            <label>Instagram</label>
+                            <input type="url" id="socialInstagram" placeholder="https://instagram.com/..." class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Facebook</label>
+                            <input type="url" id="socialFacebook" placeholder="https://facebook.com/..." class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Pinterest</label>
+                            <input type="url" id="socialPinterest" placeholder="https://pinterest.com/..." class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="settings-card full-width">
+                        <h3><i class="fas fa-palette"></i> Personalização</h3>
+                        <div class="color-settings">
+                            <div class="form-group">
+                                <label>Cor Principal</label>
+                                <input type="color" id="primaryColor" value="#c9ac66" class="color-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Cor Secundária</label>
+                                <input type="color" id="secondaryColor" value="#8b7355" class="color-input">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-actions">
+                    <button class="btn btn-outline" onclick="resetSettings()">
+                        <i class="fas fa-undo"></i>
+                        <span>Resetar</span>
+                    </button>
+                    <button class="btn btn-primary" onclick="saveSettings()">
+                        <i class="fas fa-save"></i>
+                        <span>Guardar Configurações</span>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="modal" id="productModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Adicionar Produto</h2>
+                <button class="close-modal" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <form id="productForm" class="modal-body">
+                <input type="hidden" id="productId">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nome do Produto *</label>
+                        <input type="text" id="productName" class="form-control" required placeholder="Ex: Lavanda Francesa">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Categoria *</label>
+                        <select id="productCategory" class="form-control" required>
+                            <option value="">Selecione...</option>
+                            <option value="floral">Floral</option>
+                            <option value="citrico">Cítrico</option>
+                            <option value="amadeirado">Amadeirado</option>
+                            <option value="especiarias">Especiarias</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Preço (€) *</label>
+                        <input type="number" id="productPrice" class="form-control" required step="0.01" min="0" placeholder="24.90">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Imagem do Produto *</label>
+                    <div class="image-input-group">
+                        <div class="upload-option">
+                            <input type="radio" name="imageSource" id="imageSourceFile" value="file" checked>
+                            <label for="imageSourceFile">
+                                <i class="fas fa-upload"></i>
+                                <span>Carregar do Computador</span>
+                            </label>
+                        </div>
+                        <div class="upload-option">
+                            <input type="radio" name="imageSource" id="imageSourceUrl" value="url">
+                            <label for="imageSourceUrl">
+                                <i class="fas fa-link"></i>
+                                <span>URL da Internet</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div id="fileUploadSection" class="upload-section active">
+                        <div class="file-upload-wrapper">
+                            <input type="file" id="productImageFile" accept="image/jpeg,image/png,image/jpg,image/webp" class="file-input">
+                            <label for="productImageFile" class="file-upload-label">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Clique para selecionar uma imagem</span>
+                                <small>JPG, PNG ou WEBP (máx. 2MB)</small>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div id="urlUploadSection" class="upload-section">
+                        <input type="url" id="productImageUrl" class="form-control" placeholder="https://exemplo.com/imagem.jpg">
+                        <small>Cole a URL completa da imagem</small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Descrição *</label>
+                    <textarea id="productDescription" class="form-control" required rows="3" placeholder="Descrição curta do produto"></textarea>
+                </div>
+
+                <div class="image-preview" id="imagePreview">
+                    <img id="previewImg" src="" alt="Preview">
+                </div>
+            </form>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" id="cancelBtn">Cancelar</button>
+                <button type="submit" form="productForm" class="btn btn-primary" id="saveProductBtn">
+                    <i class="fas fa-save"></i>
+                    <span>Guardar Produto</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Operação realizada com sucesso!</span>
+    </div>
+
+    <div class="modal" id="shareProductModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-share">
+            <div class="modal-header">
+                <h2><i class="fas fa-share-alt"></i> Partilhar Produto</h2>
+                <button class="close-modal" id="closeShareProductModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="share-product-preview" id="shareProductPreview">
+                </div>
+
+                <div class="share-message-section">
+                    <h3>Mensagem de Partilha</h3>
+                    <textarea id="shareMessageText" class="form-control" rows="4" placeholder="Digite a mensagem para partilhar nas redes sociais..."></textarea>
+                    <div class="share-tips">
+                        <small><i class="fas fa-lightbulb"></i> Dica: Use emojis e hashtags para maior alcance!</small>
+                    </div>
+                </div>
+
+                <div class="share-social-buttons">
+                    <h3>Escolha a Rede Social</h3>
+                    <div class="social-share-grid">
+                        <button class="social-share-btn whatsapp" onclick="shareToSocial('whatsapp')">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>WhatsApp</span>
+                            <small>Partilhar via WhatsApp</small>
+                        </button>
+                        <button class="social-share-btn facebook" onclick="shareToSocial('facebook')">
+                            <i class="fab fa-facebook"></i>
+                            <span>Facebook</span>
+                            <small>Publicar no Facebook</small>
+                        </button>
+                        <button class="social-share-btn instagram" onclick="shareToSocial('instagram')">
+                            <i class="fab fa-instagram"></i>
+                            <span>Instagram</span>
+                            <small>Copiar texto para Instagram</small>
+                        </button>
+                        <button class="social-share-btn twitter" onclick="shareToSocial('twitter')">
+                            <i class="fab fa-twitter"></i>
+                            <span>Twitter</span>
+                            <small>Tweet sobre o produto</small>
+                        </button>
+                        <button class="social-share-btn pinterest" onclick="shareToSocial('pinterest')">
+                            <i class="fab fa-pinterest"></i>
+                            <span>Pinterest</span>
+                            <small>Pin do produto</small>
+                        </button>
+                        <button class="social-share-btn linkedin" onclick="shareToSocial('linkedin')">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                            <small>Partilhar no LinkedIn</small>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="share-actions">
+                    <button class="btn btn-outline" onclick="copyShareLink()">
+                        <i class="fas fa-link"></i>
+                        <span>Copiar Link</span>
+                    </button>
+                    <button class="btn btn-outline" onclick="downloadProductImage()">
+                        <i class="fas fa-download"></i>
+                        <span>Baixar Imagem</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" onclick="closeShareProductModal()">
+                    <span>Fechar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="categoryModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="categoryModalTitle">Adicionar Categoria</h2>
+                <button class="close-modal" id="closeCategoryModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <form id="categoryForm" class="modal-body">
+                <input type="hidden" id="categoryId">
+                
+                <div class="form-group">
+                    <label>Identificador (ID) *</label>
+                    <input type="text" id="categorySlug" class="form-control" required placeholder="Ex: floral" pattern="[a-z0-9-]+">
+                    <small>Apenas letras minúsculas, números e hífens. Ex: floral, citrico, especiarias</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Nome da Categoria *</label>
+                    <input type="text" id="categoryName" class="form-control" required placeholder="Ex: Floral">
+                </div>
+
+                <div class="form-group">
+                    <label>Ícone Font Awesome *</label>
+                    <input type="text" id="categoryIcon" class="form-control" required placeholder="Ex: fa-flower">
+                    <small>Escolha um ícone em <a href="https://fontawesome.com/icons" target="_blank">fontawesome.com/icons</a></small>
+                </div>
+
+                <div class="form-group">
+                    <label>Cor (HEX)</label>
+                    <input type="color" id="categoryColor" class="color-input" value="#c9ac66">
+                </div>
+
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <textarea id="categoryDescription" class="form-control" rows="2" placeholder="Breve descrição da categoria"></textarea>
+                </div>
+            </form>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" id="cancelCategoryBtn">Cancelar</button>
+                <button type="submit" form="categoryForm" class="btn btn-primary" id="saveCategoryBtn">
+                    <i class="fas fa-save"></i>
+                    <span>Guardar Categoria</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin-script.js"></script>
+</body>
+</html>
