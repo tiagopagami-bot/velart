@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Velas aromáticas artesanais de alta qualidade. Aromas exclusivos para transformar seu ambiente.">
+    <meta property="og:title" content="Velas Aromáticas Artesanais">
+    <meta property="og:description" content="Descubra nossa coleção exclusiva de velas aromáticas artesanais">
+    <meta property="og:image" content="./assets/og-image.jpg">
+    <title>VelArt | Velas Aromáticas Artesanais Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="scroll-progress"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="candleGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#e4d4b5;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#c9ac66;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="flameGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#FF6347;stop-opacity:1" />
+                            </linearGradient>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <rect x="35" y="40" width="30" height="50" rx="3" fill="url(#candleGradient)" stroke="#a88453" stroke-width="1.5"/>
+                        <ellipse cx="50" cy="40" rx="15" ry="4" fill="#e4d4b5" stroke="#a88453" stroke-width="1"/>
+                        <line x1="50" y1="25" x2="50" y2="40" stroke="#8b7355" stroke-width="1.5"/>
+                        <path d="M 50 10 Q 45 20 50 28 Q 55 20 50 10" fill="url(#flameGradient)" filter="url(#glow)" opacity="0.95"/>
+                        <path d="M 50 12 Q 48 18 50 24 Q 52 18 50 12" fill="#FFD700" opacity="0.8"/>
+                        <circle cx="50" cy="18" r="1.5" fill="#FFF" opacity="0.9"/>
+                    </svg>
+                    <span>VelArt</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Início</a></li>
+                    <li><a href="#produtos" class="nav-link">Produtos</a></li>
+                    <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                    <li><a href="#contato" class="nav-link">Contato</a></li>
+                </ul>
+                <div class="nav-icons">
+                    <button class="cart-btn" id="cartBtn" aria-label="Carrinho de compras">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                        <span class="cart-pulse"></span>
+                    </button>
+                    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-particles"></div>
+        <div class="hero-content">
+            <div class="hero-badge">✨ Premium Quality</div>
+            <h1 class="hero-title">
+                <span class="hero-title-line">Velas Aromáticas</span>
+                <span class="hero-title-line">Artesanais</span>
+            </h1>
+            <p class="hero-subtitle">Transforme seu ambiente com nossos aromas exclusivos feitos à mão</p>
+            <div class="hero-buttons">
+                <a href="#produtos" class="btn btn-primary">
+                    <span>Explorar Coleção</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#sobre" class="btn btn-outline">
+                    <span>Nossa História</span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Natural</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">12+</div>
+                    <div class="stat-label">Aromas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5★</div>
+                    <div class="stat-label">Avaliações</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <section class="features-banner">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-badge">
+                    <i class="fas fa-truck"></i>
+                    <div>
+                        <strong>Envio Grátis</strong>
+                        <span>Em compras acima de €50</span>
+                    </div>
+                </div>
+                <div class="feature-badge">
+                    <i class="fas fa-leaf"></i>
+                    <div>
+                        <strong>100% Natural</strong>
+                        <span>Cera de soja vegetal</span>
+                    </div>
+                </div>
+                <div class="feature-badge">
+                    <i class="fas fa-heart"></i>
+                    <div>
+                        <strong>Feito à Mão</strong>
+                        <span>Com amor e dedicação</span>
+                    </div>
+                </div>
+                <div class="feature-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <div>
+                        <strong>Garantia</strong>
+                        <span>Satisfação garantida</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="produtos" class="produtos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Nossa Coleção</span>
+                <h2 class="section-title">Descubra Nossos Aromas</h2>
+                <p class="section-description">Cada vela é uma experiência única criada com óleos essenciais premium</p>
+            </div>
+            
+            <div class="filter-container">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-th"></i>
+                        <span>Todos</span>
+                    </button>
+                    <button class="filter-btn" data-filter="floral">
+                        <i class="fas fa-flower"></i>
+                        <span>Floral</span>
+                    </button>
+                    <button class="filter-btn" data-filter="citrico">
+                        <i class="fas fa-lemon"></i>
+                        <span>Cítrico</span>
+                    </button>
+                    <button class="filter-btn" data-filter="amadeirado">
+                        <i class="fas fa-tree"></i>
+                        <span>Amadeirado</span>
+                    </button>
+                    <button class="filter-btn" data-filter="especiarias">
+                        <i class="fas fa-pepper-hot"></i>
+                        <span>Especiarias</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="produtos-grid" id="produtosGrid"></div>
+        </div>
+    </section>
+
+    <section id="sobre" class="sobre">
+        <div class="container">
+            <div class="sobre-content">
+                <div class="sobre-img-wrapper">
+                    <div class="sobre-img-frame">
+                        <img src="./assets/about.jpg" alt="Sobre nós" class="sobre-img">
+                        <div class="img-decoration"></div>
+                    </div>
+                </div>
+                <div class="sobre-text">
+                    <span class="section-badge">Nossa História</span>
+                    <h2 class="section-title">Artesanato com Paixão</h2>
+                    <p>Somos apaixonados pela arte de criar velas aromáticas artesanais. Cada vela é cuidadosamente elaborada com cera de soja 100% natural e óleos essenciais premium selecionados.</p>
+                    <p>Nossa missão é proporcionar momentos de relaxamento e bem-estar através de aromas únicos e memoráveis que transformam ambientes.</p>
+                    
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div>
+                                <h3>100% Natural</h3>
+                                <p>Cera de soja vegetal premium</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-hand-holding-heart"></i>
+                            </div>
+                            <div>
+                                <h3>Artesanal</h3>
+                                <p>Feito à mão com amor</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div>
+                                <h3>Premium</h3>
+                                <p>Óleos essenciais puros</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-text">
+                    <h2>Pronto para Transformar Seu Ambiente?</h2>
+                    <p>Escolha suas velas favoritas e crie a atmosfera perfeita</p>
+                </div>
+                <a href="#produtos" class="btn btn-light">
+                    <span>Ver Produtos</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="contato">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Fale Conosco</span>
+                <h2 class="section-title">Entre em Contato</h2>
+                <p class="section-description">Estamos aqui para ajudar com qualquer dúvida</p>
+            </div>
+            
+            <div class="contato-content">
+                <form class="contato-form" id="contatoForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo</label>
+                            <input type="text" id="nome" placeholder="Seu nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" placeholder="seu@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" placeholder="+351 912 345 678">
+                    </div>
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem</label>
+                        <textarea id="mensagem" rows="5" placeholder="Como podemos ajudar?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <span>Enviar Mensagem</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+                
+                <div class="contato-info">
+                    <h3>Informações de Contato</h3>
+                    <div class="info-cards">
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <strong>E-mail</strong>
+                                <a href="mailto:contato@velart.pt">contato@velart.pt</a>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <strong>Telefone</strong>
+                                <a href="tel:+351912345678">+351 912 345 678</a>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <strong>Localização</strong>
+                                <span>Lisboa, Portugal</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-section">
+                        <h4>Siga-nos nas redes sociais</h4>
+                        <div class="social-icons">
+                            <a href="https://instagram.com" target="_blank" class="social-icon instagram" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://facebook.com" target="_blank" class="social-icon facebook" aria-label="Facebook">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="https://wa.me/351912345678" target="_blank" class="social-icon whatsapp" aria-label="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://pinterest.com" target="_blank" class="social-icon pinterest" aria-label="Pinterest">
+                                <i class="fab fa-pinterest"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cart-modal" id="cartModal">
+        <div class="modal-overlay"></div>
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2><i class="fas fa-shopping-bag"></i> Carrinho de Compras</h2>
+                <button class="close-cart" id="closeCart" aria-label="Fechar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="cart-items" id="cartItems"></div>
+            <div class="cart-footer">
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="cartSubtotal">€ 0,00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span id="cartTotal">€ 0,00</span>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-block" id="checkoutBtn">
+                    <span>Finalizar Pedido</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="btn btn-outline btn-block" id="continueShopping">
+                    <span>Continuar Comprando</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="share-modal" id="shareModal">
+        <div class="modal-overlay"></div>
+        <div class="share-content">
+            <div class="share-header">
+                <h3><i class="fas fa-share-alt"></i> Compartilhar Produto</h3>
+                <button class="close-share" id="closeShare" aria-label="Fechar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="share-body">
+                <div class="share-buttons">
+                    <button class="share-btn whatsapp" data-platform="whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp</span>
+                    </button>
+                    <button class="share-btn facebook" data-platform="facebook">
+                        <i class="fab fa-facebook"></i>
+                        <span>Facebook</span>
+                    </button>
+                    <button class="share-btn instagram" data-platform="instagram">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </button>
+                    <button class="share-btn pinterest" data-platform="pinterest">
+                        <i class="fab fa-pinterest"></i>
+                        <span>Pinterest</span>
+                    </button>
+                    <button class="share-btn twitter" data-platform="twitter">
+                        <i class="fab fa-twitter"></i>
+                        <span>Twitter</span>
+                    </button>
+                    <button class="share-btn copy" data-platform="copy">
+                        <i class="fas fa-link"></i>
+                        <span>Copiar Link</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="candleGradientFooter" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#e4d4b5;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#c9ac66;stop-opacity:1" />
+                                </linearGradient>
+                                <linearGradient id="flameGradientFooter" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#FF6347;stop-opacity:1" />
+                                </linearGradient>
+                                <filter id="glowFooter">
+                                    <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            <rect x="35" y="40" width="30" height="50" rx="3" fill="url(#candleGradientFooter)" stroke="#a88453" stroke-width="1.5"/>
+                            <ellipse cx="50" cy="40" rx="15" ry="4" fill="#e4d4b5" stroke="#a88453" stroke-width="1"/>
+                            <line x1="50" y1="25" x2="50" y2="40" stroke="#8b7355" stroke-width="1.5"/>
+                            <path d="M 50 10 Q 45 20 50 28 Q 55 20 50 10" fill="url(#flameGradientFooter)" filter="url(#glowFooter)" opacity="0.95"/>
+                            <path d="M 50 12 Q 48 18 50 24 Q 52 18 50 12" fill="#FFD700" opacity="0.8"/>
+                            <circle cx="50" cy="18" r="1.5" fill="#FFF" opacity="0.9"/>
+                        </svg>
+                        <span>VelArt</span>
+                    </div>
+                    <p>Velas aromáticas artesanais de alta qualidade para transformar seu ambiente.</p>
+                    <div class="footer-social">
+                        <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://pinterest.com" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#produtos">Produtos</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Categorias</h3>
+                    <ul>
+                        <li><a href="#produtos">Velas Florais</a></li>
+                        <li><a href="#produtos">Velas Cítricas</a></li>
+                        <li><a href="#produtos">Velas Amadeiradas</a></li>
+                        <li><a href="#produtos">Velas Especiarias</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Horário</h3>
+                    <p>Segunda a Sexta:<br><strong>9h às 18h</strong></p>
+                    <p>Sábado:<br><strong>9h às 13h</strong></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 VelArt. Todos os direitos reservados.</p>
+                <div class="payment-methods">
+                    <span class="payment-method">MB WAY</span>
+                    <i class="fas fa-university"></i>
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="payment-modal" id="paymentModal">
+        <div class="modal-overlay"></div>
+        <div class="payment-content">
+            <div class="payment-header">
+                <h2><i class="fas fa-credit-card"></i> Método de Pagamento</h2>
+                <button class="close-payment" id="closePayment" aria-label="Fechar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="payment-body">
+                <div class="order-summary">
+                    <h3>Resumo do Pedido</h3>
+                    <div id="paymentOrderItems"></div>
+                    <div class="summary-total">
+                        <span>Total a Pagar:</span>
+                        <span id="paymentTotal" class="total-amount">€ 0,00</span>
+                    </div>
+                </div>
+
+                <div class="payment-methods-selection">
+                    <h3>Escolha o Método de Pagamento</h3>
+                    
+                    <div class="payment-option" data-method="mbway">
+                        <div class="payment-option-header">
+                            <input type="radio" name="payment-method" id="mbway" value="mbway">
+                            <label for="mbway">
+                                <div class="payment-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <div class="payment-info">
+                                    <strong>MB WAY</strong>
+                                    <span>Pagamento instantâneo via telemóvel</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="payment-details" id="mbwayDetails">
+                            <div class="form-group">
+                                <label for="mbwayPhone">Número de Telemóvel</label>
+                                <input type="tel" id="mbwayPhone" placeholder="+351 912 345 678" pattern="[0-9+\s]+" required>
+                                <small>Receberá uma notificação na app MB WAY para confirmar o pagamento</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="payment-option" data-method="multibanco">
+                        <div class="payment-option-header">
+                            <input type="radio" name="payment-method" id="multibanco" value="multibanco">
+                            <label for="multibanco">
+                                <div class="payment-icon">
+                                    <i class="fas fa-university"></i>
+                                </div>
+                                <div class="payment-info">
+                                    <strong>Transferência Multibanco</strong>
+                                    <span>Referência para pagamento ATM ou homebanking</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="payment-details" id="multibancoDetails">
+                            <div class="multibanco-ref-preview">
+                                <p><i class="fas fa-info-circle"></i> Após confirmar, receberá os dados de pagamento por e-mail e WhatsApp</p>
+                                <div class="ref-example">
+                                    <div class="ref-item">
+                                        <span class="ref-label">Entidade:</span>
+                                        <span class="ref-value">12345</span>
+                                    </div>
+                                    <div class="ref-item">
+                                        <span class="ref-label">Referência:</span>
+                                        <span class="ref-value">123 456 789</span>
+                                    </div>
+                                    <div class="ref-item">
+                                        <span class="ref-label">Valor:</span>
+                                        <span class="ref-value" id="multibancoAmount">€ 0,00</span>
+                                    </div>
+                                </div>
+                                <small>Validade: 3 dias úteis</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="payment-option" data-method="whatsapp">
+                        <div class="payment-option-header">
+                            <input type="radio" name="payment-method" id="whatsapp" value="whatsapp" checked>
+                            <label for="whatsapp">
+                                <div class="payment-icon whatsapp-icon">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="payment-info">
+                                    <strong>WhatsApp</strong>
+                                    <span>Finalizar pedido via WhatsApp (recomendado)</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="payment-details" id="whatsappDetails" style="display: block;">
+                            <p><i class="fas fa-check-circle"></i> Será redirecionado para o WhatsApp onde poderá escolher o método de pagamento e receber todos os detalhes do pedido.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="customer-info">
+                    <h3>Dados para Envio</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="customerName">Nome Completo *</label>
+                            <input type="text" id="customerName" placeholder="Seu nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerEmail">E-mail *</label>
+                            <input type="email" id="customerEmail" placeholder="seu@email.pt" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="customerPhone">Telefone *</label>
+                            <input type="tel" id="customerPhone" placeholder="+351 912 345 678" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerPostal">Código Postal *</label>
+                            <input type="text" id="customerPostal" placeholder="1000-001" pattern="[0-9]{4}-[0-9]{3}" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerAddress">Morada Completa *</label>
+                        <input type="text" id="customerAddress" placeholder="Rua, número, andar" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="customerCity">Cidade *</label>
+                            <input type="text" id="customerCity" placeholder="Lisboa" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerCountry">País</label>
+                            <input type="text" id="customerCountry" value="Portugal" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="orderNotes">Observações (opcional)</label>
+                        <textarea id="orderNotes" rows="3" placeholder="Informações adicionais sobre a entrega"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="payment-footer">
+                <button class="btn btn-outline btn-block" id="backToCart">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Voltar ao Carrinho</span>
+                </button>
+                <button class="btn btn-primary btn-block" id="confirmPayment">
+                    <span>Confirmar Pedido</span>
+                    <i class="fas fa-check"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
